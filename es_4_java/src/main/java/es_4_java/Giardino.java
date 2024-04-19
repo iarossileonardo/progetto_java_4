@@ -4,28 +4,42 @@ public class Giardino {
     private int contaA = 5;
     private int contaB = 10;
 
-    public synchronized void entra(Visitatore v){
+    public synchronized char entra(Visitatore v) throws InterruptedException{
         char ing;
+        int tempo;
+
+        
+        while (contaA == 0 && contaB == 0) {
+            wait();
+        }
+            
         if(contaA > 0){
             contaA--;
             ing = 'a';
+            tempo = 3000;
         }else{
             contaB--;
             ing = 'b';
+            tempo = 5000;
         }
-        System.out.println(v + " è entrato nell'ingresso " + ing);
+            
+        System.out.println(v.getNome() + " è entrato nell'ingresso " + ing + " e si trattiene per " + tempo + "s");
+            
+        return ing;
+    
     }
 
-    public synchronized void esci(Visitatore v){
-        char ing;
-        if(contaA < 5){
+    public synchronized void esci(Visitatore v, char ing){
+
+        if(ing == 'a'){
             contaA++;
-            ing = 'b';
         }else{
             contaB++;
-            ing = 'b';
         }
-        System.out.println(v + " è uscito dall'uscita " + ing);
+
+        notifyAll();
+
+        System.out.println(v.getNome() + " è uscito dall'ingresso " + ing);
     }
 
     public int getContaA() {
