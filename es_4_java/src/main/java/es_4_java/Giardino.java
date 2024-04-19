@@ -3,9 +3,10 @@ package es_4_java;
 public class Giardino {
     private int contaA = 5;
     private int contaB = 10;
+    char ing;
 
     public synchronized char entra(Visitatore v) throws InterruptedException{
-        char ing;
+        
         int tempo;
 
         
@@ -16,11 +17,11 @@ public class Giardino {
         if(contaA > 0){
             contaA--;
             ing = 'a';
-            tempo = 3000;
+            tempo = 3;
         }else{
             contaB--;
             ing = 'b';
-            tempo = 5000;
+            tempo = 5;
         }
             
         System.out.println(v.getNome() + " è entrato nell'ingresso " + ing + " e si trattiene per " + tempo + "s");

@@ -14,9 +14,9 @@ public class Visitatore extends Thread{
         try {
             char ing = g.entra(this);
             if(ing == 'a')
-                this.sleep(3000);
+                sleep(3000);
             else
-                this.sleep(5000);
+                sleep(5000);
             g.esci(this, ing);
         } catch (Exception e) {
             e.printStackTrace();
