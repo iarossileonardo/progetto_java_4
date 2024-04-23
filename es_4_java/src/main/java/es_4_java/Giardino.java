@@ -8,27 +8,22 @@ public class Giardino {
     public synchronized char entra(Visitatore v) throws InterruptedException{
         
         int tempo = 0;
-        ing = 'f';
-
         
         while (contaA == 0 && contaB == 0) {
-            System.out.println(v.getNome() + " in attesa");
             wait();
         }
             
         if(contaA > 0){
-            System.out.println(v.getNome() + " entrato in A");
             contaA--;
             ing = 'a';
             tempo = 3;
         }else if(contaB > 0){
-            System.out.println(v.getNome() + " entrato in A");
             contaB--;
             ing = 'b';
             tempo = 5;
         }
             
-        System.out.println(v.getNome() + " è entrato nell'ingresso " + ing + " e si trattiene per " + tempo + "s---- contaA = " + contaA);
+        System.out.println(v.getNome() + " è entrato nell'ingresso " + ing + " e si trattiene per " + tempo + "s");
             
         return ing;
     

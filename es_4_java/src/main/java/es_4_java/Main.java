@@ -2,12 +2,15 @@ package es_4_java;
 
 public class Main {
     public static void main(String[] args) {
-        Visitatore visitatori[] = new Visitatore[50];
-        for(int i = 0; i < 50; i++){
-            visitatori[i] = new Visitatore("Visitatore " + i);
+        int numeroPersone = 30;
+        Visitatore visitatori[] = new Visitatore[numeroPersone];
+        Giardino g = new Giardino();
+
+        for(int i = 0; i < numeroPersone; i++){
+            visitatori[i] = new Visitatore("Visitatore " + i, g);
         }
 
-        for(int i = 0; i < 50; i++){
+        for(int i = 0; i < numeroPersone; i++){
             visitatori[i].start();
         }
     }

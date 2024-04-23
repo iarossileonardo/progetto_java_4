@@ -4,8 +4,8 @@ public class Visitatore extends Thread{
     private Giardino g;
     private String nome;
 
-    public Visitatore(String nome) {
-        this.g = new Giardino();
+    public Visitatore(String nome, Giardino g) {
+        this.g = g;
         this.nome = nome;
     }
 
